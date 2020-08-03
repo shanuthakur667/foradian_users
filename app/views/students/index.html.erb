@@ -1,0 +1,52 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card box-shadow">
+        <div class="header row">
+          <div class="text-left col-md-6">
+            <h4 class="title">Students</h4>
+          </div>
+        </div>
+        <div class="content table-responsive table-full-width">
+          <%= form_tag "/students", method: :get, id: "searchForm" do %>
+            <table class="table table-hover">
+              <tr style="border-bottom-style: hidden;">
+                <td>
+                  <div class="form-group">
+                    <%= search_field_tag "search[name]", params[:search] ? params[:search][:name] : "", "aria-describedby": "addon-right addon-left", placeholder: "Fullname", class: "form-control" %>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <%= search_field_tag "search[institution_name]", params[:search] ? params[:search]["institution_name"] : "", "aria-describedby": "addon-right addon-left", placeholder: "Institution name", class: "form-control" %>
+                 </div>
+                </td>
+                <td>
+                  <button id="search-property">
+                    <span class="fa fa-search" title="Search"></span>
+                  </button>
+                </td>
+              </tr>
+            </table>
+          <% end %>
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <th><%= sortable("name", "Full name") %></th>
+                <th><%= sortable("institution_name", "Institution name") %></th>
+              </thead>
+              <tbody>
+                <% @students.each do |student| %>
+                  <tr>
+                    <td><%= student.name %></td>
+                    <td><%= student.institution_name %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+             </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

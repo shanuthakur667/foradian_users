@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-att  ={name: "a", institution_name: "abc"},{name: "b", institution_name: "xyz"},{name: "c", institution_name: "abc"}
+att  ={name: "Furst user", institution_name: "abc"},{name: "Seco user", institution_name: "xyz"},{name: "third Student", institution_name: "abc"}
 att.each do |attribute|
   Student.create(attribute)
 end
